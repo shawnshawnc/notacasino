@@ -1,7 +1,19 @@
 import random
 
 money = 10
+broke = False
+deck = [
+    {
+        "class" : "diamond",
+        "value" : "3"
+    },
+    {
+        "class" : "clubs",
+        "value" : "3"
+    }
 
+]
+print(deck)
 def roulette():
     con = False
     global money
@@ -36,4 +48,10 @@ def roulette():
         money = money - chips
         print(f"You lost, your new balance is {money}.")
 
-roulette()
+def bankrupt():
+    global money
+    global broke
+    if money <= 0:
+        print("You are broke. Game Over.")
+        broke = True
+
