@@ -5,13 +5,264 @@ broke = False
 deck = [
     {
         "class" : "diamond",
-        "value" : "3"
+        "value" : "3",
+        "21value" : 3
     },
     {
         "class" : "clubs",
-        "value" : "3"
+        "value" : "3",
+        "21value" : 3
+    },
+    {
+        "class" : "hearts",
+        "value" : "3",
+        "21value" : 3
+    },
+    {
+        "class" : "spades",
+        "value" : "3",
+        "21value" : 3
+    },
+    {
+        "class" : "diamond",
+        "value" : "4",
+        "21value" : 4
+    },
+    {
+        "class" : "clubs",
+        "value" : "4",
+        "21value" : 4
+    },
+    {
+        "class" : "hearts",
+        "value" : "4",
+        "21value" : 4
+    },
+    {
+        "class" : "spades",
+        "value" : "4",
+        "21value" : 4
+    },
+    {
+        "class" : "diamond",
+        "value" : "5",
+        "21value" : 5
+    },
+    {
+        "class" : "clubs",
+        "value" : "5",
+        "21value" : 5
+    },
+    {
+        "class" : "hearts",
+        "value" : "5",
+        "21value" : 5
+    },
+    {
+        "class" : "spades",
+        "value" : "5",
+        "21value" : 5
+    },
+    {
+        "class" : "diamond",
+        "value" : "6",
+        "21value" : 6
+    },
+    {
+        "class" : "clubs",
+        "value" : "6",
+        "21value" : 6
+    },
+    {
+        "class" : "hearts",
+        "value" : "6",
+        "21value" : 6
+    },
+    {
+        "class" : "spades",
+        "value" : "6",
+        "21value" : 6
+    },
+    {
+        "class" : "diamond",
+        "value" : "7",
+        "21value" : 7
+    },
+    {
+        "class" : "clubs",
+        "value" : "7",
+        "21value" : 7
+    },
+    {
+        "class" : "hearts",
+        "value" : "7",
+        "21value" : 7
+    },
+    {
+        "class" : "spades",
+        "value" : "7",
+        "21value" : 7
+    },
+    {
+        "class" : "diamond",
+        "value" : "8",
+        "21value" : 8
+    },
+    {
+        "class" : "clubs",
+        "value" : "8",
+        "21value" : 8
+    },
+    {
+        "class" : "hearts",
+        "value" : "8",
+        "21value" : 8
+    },
+    {
+        "class" : "spades",
+        "value" : "8",
+        "21value" : 8
+    },
+    {
+        "class" : "diamond",
+        "value" : "9",
+        "21value" : 9
+    },
+    {
+        "class" : "clubs",
+        "value" : "9",
+        "21value" : 9
+    },
+    {
+        "class" : "hearts",
+        "value" : "9",
+        "21value" : 9
+    },
+    {
+        "class" : "spades",
+        "value" : "9",
+        "21value" : 9
+    },
+    {
+        "class" : "diamond",
+        "value" : "10",
+        "21value" : 10
+    },
+    {
+        "class" : "clubs",
+        "value" : "10",
+        "21value" : 10
+    },
+    {
+        "class" : "hearts",
+        "value" : "10",
+        "21value" : 10
+    },
+    {
+        "class" : "spades",
+        "value" : "10",
+        "21value" : 10
+    },
+    {
+        "class" : "diamond",
+        "value" : "Jack",
+        "21value" : 10
+    },
+    {
+        "class" : "clubs",
+        "value" : "Jack",
+        "21value" : 10
+    },
+    {
+        "class" : "hearts",
+        "value" : "Jack",
+        "21value" : 10
+    },
+    {
+        "class" : "spades",
+        "value" : "Jack",
+        "21value" : 10
+    },
+    {
+        "class" : "diamond",
+        "value" : "Queen",
+        "21value" : 10
+    },
+    {
+        "class" : "clubs",
+        "value" : "Queen",
+        "21value" : 10
+    },
+    {
+        "class" : "hearts",
+        "value" : "Queen",
+        "21value" : 10
+    },
+    {
+        "class" : "spades",
+        "value" : "Queen",
+        "21value" : 10
+    },
+    {
+        "class" : "diamond",
+        "value" : "King",
+        "21value" : 10
+    },
+    {
+        "class" : "clubs",
+        "value" : "King",
+        "21value" : 10
+    },
+    {
+        "class" : "hearts",
+        "value" : "King",
+        "21value" : 10
+    },
+    {
+        "class" : "spades",
+        "value" : "King",
+        "21value" : 10
+    },
+    {
+        "class" : "diamond",
+        "value" : "Ace",
+        "21value" : (10,11)
+    },
+    {
+        "class" : "clubs",
+        "value" : "Ace",
+        "21value" : (10,11)
+    },
+    {
+        "class" : "hearts",
+        "value" : "Ace",
+        "21value" : (10,11)
+    },
+    {
+        "class" : "spades",
+        "value" : "Ace",
+        "21value" : (10,11)
+    },
+    {
+        "class" : "diamond",
+        "value" : "2",
+        "21value" : 2
+    },
+    {
+        "class" : "clubs",
+        "value" : "2",
+        "21value" : 2
+    },
+    {
+        "class" : "hearts",
+        "value" : "2",
+        "21value" : 2
+    },
+    {
+        "class" : "spades",
+        "value" : "2",
+        "21value" : 2
     }
-
 ]
 print(deck)
 def roulette():
