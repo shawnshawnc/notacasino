@@ -2,6 +2,7 @@ import random
 
 money = 10
 broke = False
+con = False
 deck = [
     {
         "class" : "diamond",
@@ -264,9 +265,16 @@ deck = [
         "21value" : 2
     }
 ]
-print(deck)
+
+def bankrupt():
+    global money
+    global broke
+    if money <= 0:
+        print("You are broke. Game Over.")
+        broke = True
+
 def roulette():
-    con = False
+    global con
     global money
     chips = int(input(f"How much money would you like to bet? You have ${money} : "))
 
@@ -290,7 +298,7 @@ def roulette():
     print(f"The ball landed on {wincolor}.")
 
     if color.lower() == wincolor:
-        money += chips * 2
+        money += chips
         print(f"Congrats! Your new balance is {money}!")
     elif color.lower() == wincolor and wincolor == "green" and color.lower() == "green":
         money += chips * 10
@@ -298,11 +306,33 @@ def roulette():
     else:
         money = money - chips
         print(f"You lost, your new balance is {money}.")
+        con = False
 
-def bankrupt():
+def gencard():
+    card = random.randint(0, len(deck))
+    return deck[card]["value"], card
+print(gencard())
+def blackjack():
     global money
-    global broke
-    if money <= 0:
-        print("You are broke. Game Over.")
-        broke = True
-
+    dealer = 0
+    player = 0
+    bust = False
+    playerdeck = []
+    dealerdeck = []
+    dealerdeckplayer = []
+    chips = int(input(f"How much money would you like to bet? You have ${money}."))
+    while con == False:
+            if chips > 0 and chips <= money:
+                con = True
+            else:
+                chips = int(input(f"You do not have that much money, how much money would you like to bet? You have ${money} : "))
+    while bust == False: 
+        dealerdeck.append(gencard())
+        dealerdeck.append(gencard())
+        
+        dealerdeckplayer.append(dealerdeck[0])
+        playerdeck.append(gencard())
+        playerdeck.append(gencard())
+        player += sum(playerdeck)
+        print(f"Your deck is ")
+    
