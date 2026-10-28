@@ -227,22 +227,22 @@ deck = [
     {
         "class" : "diamond",
         "value" : "Ace",
-        "21value" : (10,11)
+        "21value" : 1
     },
     {
         "class" : "clubs",
         "value" : "Ace",
-        "21value" : (10,11)
+        "21value" : 1
     },
     {
         "class" : "hearts",
         "value" : "Ace",
-        "21value" : (10,11)
+        "21value" : 1
     },
     {
         "class" : "spades",
         "value" : "Ace",
-        "21value" : (10,11)
+        "21value" : 1
     },
     {
         "class" : "diamond",
@@ -309,30 +309,89 @@ def roulette():
         con = False
 
 def gencard():
-    card = random.randint(0, len(deck))
-    return deck[card]["value"], card
-print(gencard())
+    card = random.choice(deck)
+    return card
+
 def blackjack():
     global money
+    global con
     dealer = 0
     player = 0
-    bust = False
+    card = ""
+    action = ""
+    dealerbust = False
+    playerbust = False
+    playerwin = False
+    dealerwin = False
+    tie = False
     playerdeck = []
     dealerdeck = []
     dealerdeckplayer = []
-    chips = int(input(f"How much money would you like to bet? You have ${money}."))
+    chips = int(input(f"How much money would you like to bet? You have ${money}. "))
     while con == False:
             if chips > 0 and chips <= money:
                 con = True
             else:
                 chips = int(input(f"You do not have that much money, how much money would you like to bet? You have ${money} : "))
-    while bust == False: 
-        dealerdeck.append(gencard())
-        dealerdeck.append(gencard())
-        
-        dealerdeckplayer.append(dealerdeck[0])
-        playerdeck.append(gencard())
-        playerdeck.append(gencard())
-        player += sum(playerdeck)
-        print(f"Your deck is ")
     
+    while dealerbust == False and tie == False and playerbust == False: 
+        #card generating
+        while dealer <= 17 or dealer <= 21 and dealerbust == False:
+            card = gencard()
+            dealer += int(card["21value"])
+            dealerdeck.append(f"{card["value"]} of {card["class"]}")
+            dealerdeckplayer.append(f"{card["value"]} of {card["class"]}")
+            if dealer > 21:
+                dealerbust == False
+        if dealer == 21:
+            dealerwin = True
+        dealerdeckplayer.pop(1)
+        dealerdeckplayer.append("? Card")
+        #--------------------------------------------------------
+
+        print(f"The dealer's deck is {dealerdeckplayer[0]}, {dealerdeckplayer[1]}")
+
+        for i in range(2):
+            card = gencard()
+            player += int(card["21value"])
+            playerdeck.append(f"{card["value"]} of {card["class"]}")
+            if player == 21:
+                playerwin = True
+                break
+        
+        while action != "stand" and playerbust == False:
+            print(f"Your deck is {playerdeck} and the value is {player}.")
+            action = input("Would you like to hit or stand? ")
+            if action.lower() == "hit":
+                card = gencard()
+                player += int(card["21value"])
+                playerdeck.append(f"{card["value"]} of {card["class"]}")
+            if player > 21:
+                playerbust = True
+                break
+            if action.lower() == "stand":
+                action = "stand"
+                break
+            else:
+                print("error L371")
+
+        if dealer == player:
+            tie = True
+
+    if dealerbust == True or playerwin == True:
+        print(f"Congrats! You won {chips}!")
+        money += chips
+        print(f"Your new balance is {money}.")
+    if playerbust == True or dealerwin == True:
+        print(f"You lost.")
+        money -= chips
+        print(f"Your new balance is {money}.")
+    if tie == True:
+        print("It was a tie!")
+        print(f"Your balance is {money}.")
+        
+        
+        
+
+    
+blackjack()
