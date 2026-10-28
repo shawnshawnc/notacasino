@@ -1,4 +1,5 @@
 import random
+import os
 
 money = 10
 broke = False
@@ -382,16 +383,16 @@ def blackjack():
             tie = True
 
     if dealerbust == True or playerwin == True:
-        print(f"Congrats! You won {chips}!")
+        print(f"Congrats! You won ${chips}!")
         money += chips
         print(f"Your new balance is {money}.")
     elif playerbust == True or dealerwin == True:
         print(f"You lost.")
         money -= chips
-        print(f"Your new balance is {money}.")
+        print(f"Your new balance is ${money}.")
     elif tie == True:
         print("It was a tie!")
-        print(f"Your balance is {money}.")
+        print(f"Your balance is ${money}.")
         
         
         
