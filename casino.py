@@ -336,17 +336,20 @@ def blackjack():
     
     while dealerbust == False and tie == False and playerbust == False: 
         #card generating
-        while dealer <= 17 or dealer <= 21 and dealerbust == False:
+        while dealer <= 17:
             card = gencard()
             dealer += int(card["21value"])
             dealerdeck.append(f"{card["value"]} of {card["class"]}")
             dealerdeckplayer.append(f"{card["value"]} of {card["class"]}")
             if dealer > 21:
-                dealerbust == False
+                dealerbust = True
+                
         if dealer == 21:
             dealerwin = True
+            break
         dealerdeckplayer.pop(1)
         dealerdeckplayer.append("? Card")
+        print(dealer)
         #--------------------------------------------------------
 
         print(f"The dealer's deck is {dealerdeckplayer[0]}, {dealerdeckplayer[1]}")
@@ -382,16 +385,16 @@ def blackjack():
         print(f"Congrats! You won {chips}!")
         money += chips
         print(f"Your new balance is {money}.")
-    if playerbust == True or dealerwin == True:
+    elif playerbust == True or dealerwin == True:
         print(f"You lost.")
         money -= chips
         print(f"Your new balance is {money}.")
-    if tie == True:
+    elif tie == True:
         print("It was a tie!")
         print(f"Your balance is {money}.")
         
         
         
 
-    
+
 blackjack()
