@@ -1,5 +1,4 @@
 import random
-import os
 
 money = 10
 broke = False
@@ -350,7 +349,7 @@ def blackjack():
             break
         dealerdeckplayer.pop(1)
         dealerdeckplayer.append("? Card")
-
+        print(dealer)
         #--------------------------------------------------------
 
         print(f"The dealer's deck is {dealerdeckplayer[0]}, {dealerdeckplayer[1]}")
@@ -383,40 +382,19 @@ def blackjack():
             tie = True
 
     if dealerbust == True or playerwin == True:
-        print(f"Congrats! You won ${chips}!")
+        print(f"Congrats! You won {chips}!")
         money += chips
         print(f"Your new balance is {money}.")
     elif playerbust == True or dealerwin == True:
         print(f"You lost.")
         money -= chips
-        print(f"Your new balance is ${money}.")
+        print(f"Your new balance is {money}.")
     elif tie == True:
         print("It was a tie!")
-        print(f"Your balance is ${money}.")
+        print(f"Your balance is {money}.")
         
-def coinflip():
-    global con
-    global money
-    coin = ["heads", "tails"]
-    winflip = random.choice(coin)
-    chips = int(input(f"How much money would you like to bet? You have ${money} : "))
-    while con == False:
-            if chips > 0 and chips <= money:
-                bet = input("Head or Tails?")
-                con = True
-            else:
-                chips = int(input(f"You do not have that much money, how much money would you like to bet? You have ${money} : "))
-    print(f"The coin landed on {winflip}!")
-    if winflip == bet.lower():
-        print("Congrats you won!")
-        money += chips
-    else:
-        print("You lost.")
-        money -= chips
 
-def slots():
-    global money
-    global con
-    symbols = ["7️⃣", "💰", "👑", "🌟", "🍒", "🔑", "💎", "👍", "🌈", "🎪", "🎰", "🦴", "💲", "🪙", "🤌", "🧭", "👟", "🗿", "📢", "🎹"]
-    print(symbols)
+        
 
+
+blackjack()
