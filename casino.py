@@ -1,9 +1,9 @@
 import random
 import os
 
+con = False
 money = 10
 broke = False
-con = False
 deck = [
     {
         "class" : "diamond",
@@ -267,6 +267,7 @@ deck = [
     }
 ]
 
+
 def bankrupt():
     global money
     global broke
@@ -439,5 +440,33 @@ def slots():
         money -= 5
     print(f"Your new balance is ${money}.")
 
+def cardguess():
+    global money
+    global con
+    card = []
+    state = ""
+    card.append(gencard())
+    chips = int(input(f"How much money would you like to bet? You have ${money} : "))
+    while con == False:
+                if chips > 0 and chips <= money:
+                    bet = input("Will the card be odd, even, or a face card? ")
+                    con = True
+                else:
+                    chips = int(input(f"You do not have that much money, how much money would you like to bet? You have ${money} : "))
+    try:
+        if int(card[0]["value"]) % 2 == 0:
+            state = "even"
+        elif int(card[0]["value"]) % 2 == 1:
+            state = "odd"
+    except:
+        state = "face card"
+    if bet.lower() == state:
+        print(f"Congrats! The card was {card[0]["value"].title()}.")
+        money += chips
+    else:
+        print(f"You lost! The card was {card[0]["value"].title()}.")
+        money -= chips
+    print(f"Your new balance is {money}.")
 
-slots()
+
+print("touch if gay if your hank your just gay")
