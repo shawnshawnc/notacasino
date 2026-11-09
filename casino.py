@@ -468,5 +468,4 @@ def cardguess():
         money -= chips
     print(f"Your new balance is {money}.")
 
-
-print("touch if gay if your hank your just gay")
+cardguess()
