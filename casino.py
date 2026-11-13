@@ -1,6 +1,6 @@
 import random
 import os
-
+import time
 con = False
 money = 10
 broke = False
@@ -272,7 +272,6 @@ def bankrupt():
     global money
     global broke
     if money <= 0:
-        print("You are broke. Game Over.")
         broke = True
 
 def roulette():
@@ -354,7 +353,6 @@ def blackjack():
 
         #--------------------------------------------------------
 
-        print(f"The dealer's deck is {dealerdeckplayer[0]}, {dealerdeckplayer[1]}")
 
         for i in range(2):
             card = gencard()
@@ -377,8 +375,6 @@ def blackjack():
             if action.lower() == "stand":
                 action = "stand"
                 break
-            else:
-                print("error L371")
 
         if dealer == player:
             tie = True
@@ -403,7 +399,7 @@ def coinflip():
     chips = int(input(f"How much money would you like to bet? You have ${money} : "))
     while con == False:
             if chips > 0 and chips <= money:
-                bet = input("Head or Tails?")
+                bet = input("Heads or Tails? ")
                 con = True
             else:
                 chips = int(input(f"You do not have that much money, how much money would you like to bet? You have ${money} : "))
@@ -448,11 +444,11 @@ def cardguess():
     card.append(gencard())
     chips = int(input(f"How much money would you like to bet? You have ${money} : "))
     while con == False:
-                if chips > 0 and chips <= money:
-                    bet = input("Will the card be odd, even, or a face card? ")
-                    con = True
-                else:
-                    chips = int(input(f"You do not have that much money, how much money would you like to bet? You have ${money} : "))
+        if chips > 0 and chips <= money:
+            bet = input("Will the card be odd, even, or a face card? ")
+            con = True
+        else:
+            chips = int(input(f"You do not have that much money, how much money would you like to bet? You have ${money} : "))
     try:
         if int(card[0]["value"]) % 2 == 0:
             state = "even"
@@ -468,4 +464,101 @@ def cardguess():
         money -= chips
     print(f"Your new balance is {money}.")
 
-cardguess()
+def redblack():
+    global money
+    global con
+    red = 0
+    black = 0
+    deck = []
+    playerdeck = []
+    winner = ""
+    
+    for i in range(5):
+        card = gencard()
+        deck.append(card)
+        playerdeck.append(f"{card["value"]} of {card["class"]}")
+        
+    chips = int(input(f"How much money would you like to bet? You have ${money}. "))
+    while con == False:
+            if chips > 0 and chips <= money:
+                color = input("Will the majority of the colors be red or black? ")
+                con = True
+            else:
+                chips = int(input(f"You do not have that much money, how much money would you like to bet? You have ${money} : "))
+    
+    for i in range(len(deck)):
+        if deck[i]["class"] == "diamond" or deck[i]["class"] == "hearts":
+            red += 1
+        else:
+            black += 1
+    
+    if red > black:
+        winner = "red"
+    elif red < black:
+        winner = "black"
+    elif red == 5:
+        winner = "full sweep red"
+    elif black == 5:
+        winner = "full sweep black"
+
+    if winner == color.lower():
+        print(f"Congrats! You won!")
+        money += chips
+    elif winner == f"full sweep {color.lower()}":
+        print(f"Congrats!! You won big!!!!")
+        money += chips*2
+    else:
+        print("You lost.")
+        money -= chips
+    
+    print(f"The deck was {playerdeck}.")
+    print(f"Your new balance is {money}.")
+
+def casino():
+    global money
+    global bankrupt
+    global con
+    print("Your in debt")
+    time.sleep(2)
+    print("They are coming for you mijo")
+    time.sleep(2)
+    print("You need to make 10000 habibi")
+    time.sleep(2)
+    print("Hit the casino... RUN MIJO")
+    time.sleep(5)
+    os.system('cls')
+    while money < 10000:
+        print(f"You have to pay off {10000-money}.")
+        game = int(input("What game would you like to play? 0: Roulette 1: Blackjack 2: Coin Flip 3: Slots 4: Card Guess 5: Red or Black "))
+        if game == 0:
+            roulette()
+        if game == 1:
+            blackjack()
+        if game == 2:
+            coinflip()
+        if game == 3:
+            slots()
+        if game == 4:
+            cardguess()
+        if game == 5:
+            redblack()
+        bankrupt()
+        if broke == True:
+            time.sleep(5)
+            os.system('cls')
+            print("You lost all your money.")
+            print("Game Over")
+            time.sleep(10)
+            break
+        con = False
+        time.sleep(10)
+        os.system('cls')
+    os.system('cls')
+    if broke == True:
+        print("")
+    else:
+        print("You paid off all your debt.")
+        print("You got slimed anyway.")
+
+
+casino()
